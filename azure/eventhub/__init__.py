@@ -487,6 +487,7 @@ class EventData(object):
     PROP_OFFSET = b"x-opt-offset"
     PROP_PARTITION_KEY = b"x-opt-partition-key"
     PROP_TIMESTAMP = b"x-opt-enqueued-time"
+    PROP_DEVICE_ID = b"iothub-connection-device-id"
 
     def __init__(self, body=None, batch=None, message=None):
         """
@@ -525,6 +526,14 @@ class EventData(object):
         :returns: int
         """
         return self._annotations.get(EventData.PROP_SEQ_NUMBER, None)
+
+    @property
+    def device_id(self):
+        """
+        The sequence number of the event data object.
+        :returns: int
+        """
+        return self._annotations.get(EventData.PROP_DEVICE_ID, None)
 
     @property
     def offset(self):
